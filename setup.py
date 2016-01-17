@@ -1,5 +1,7 @@
 #!/bin/env python
 
+import os
+
 from setuptools import setup, find_packages
 
 
@@ -9,6 +11,8 @@ LICENSE = 'GUST Font License (GFL)'
 TYPEFACE_ID = ''.join(char for char in NAME if char.isalnum()).lower()
 PACKAGE_NAME = 'rinoh-typeface-{}'.format(TYPEFACE_ID)
 PACKAGE_DIR = PACKAGE_NAME.replace('-', '_')
+
+SETUP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 setup(
@@ -26,6 +30,7 @@ setup(
     author='Brecht Machiels',
     author_email='brecht@mos6581.org',
     description='TeX Gyre Adventor typeface',
+    long_description=open(os.path.join(SETUP_PATH, 'README.rst')).read(),
     url='https://github.com/brechtm/rinoh-typeface-texgyreadventor',
     keywords='opentype font',
     license=LICENSE,
