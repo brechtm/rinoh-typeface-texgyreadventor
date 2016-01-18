@@ -24,7 +24,6 @@ setup(
     packages=find_packages(),
     package_data={PACKAGE_DIR: ['*.otf', '*.txt']},
     install_requires=['rinohtype'],
-    provides=[PACKAGE_DIR],
     entry_points={
         'rinoh_typefaces':
             ['{} = {}:typeface'.format(ENTRY_POINT_NAME, PACKAGE_DIR)]
