@@ -1,6 +1,7 @@
 #!/bin/env python
 
 import os
+import string
 
 from setuptools import setup, find_packages
 
@@ -8,8 +9,10 @@ from setuptools import setup, find_packages
 NAME = 'TeX Gyre Adventor'
 LICENSE = 'GUST Font License (GFL)'
 
-TYPEFACE_ID = ''.join(char for char in NAME if char.isalnum()).lower()
-PACKAGE_NAME = 'rinoh-typeface-{}'.format(TYPEFACE_ID)
+ENTRY_POINT_NAME = NAME.lower()
+IDENTIFIER = ''.join(char for char in ENTRY_POINT_NAME
+                     if char in string.ascii_lowercase + string.digits)
+PACKAGE_NAME = 'rinoh-typeface-{}'.format(IDENTIFIER)
 PACKAGE_DIR = PACKAGE_NAME.replace('-', '_')
 
 SETUP_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -24,7 +27,7 @@ setup(
     provides=[PACKAGE_DIR],
     entry_points={
         'rinoh_typefaces':
-            ['{} = {}:typeface'.format(TYPEFACE_ID, PACKAGE_DIR)]
+            ['{} = {}:typeface'.format(ENTRY_POINT_NAME, PACKAGE_DIR)]
     },
 
     author='Brecht Machiels',
