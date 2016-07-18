@@ -20,12 +20,12 @@ SETUP_PATH = os.path.dirname(os.path.abspath(__file__))
 
 setup(
     name=PACKAGE_NAME,
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     package_data={PACKAGE_DIR: ['*.otf', '*.txt']},
     install_requires=['rinohtype'],
     entry_points={
-        'rinoh_typefaces':
+        'rinoh.typefaces':
             ['{} = {}:typeface'.format(ENTRY_POINT_NAME, PACKAGE_DIR)]
     },
 
